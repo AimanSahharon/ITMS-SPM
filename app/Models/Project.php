@@ -16,16 +16,6 @@ class Project extends Model
         return $this->belongsToMany(Developer::class, 'developer_project');
     }
 
-    public function development()
-    {
-        return $this->belongsTo(Development::class, 'ProjectID');
-    }
-
-    public function progress()
-    {
-        return $this->belongsTo(Development::class, 'ProjectID');
-    }
-
     public function leaddeveloper()
     {
         return $this->belongsTo(LeadDeveloper::class, 'DeveloperID');

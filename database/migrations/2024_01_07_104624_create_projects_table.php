@@ -22,6 +22,11 @@ return new class extends Migration
             $table->date("End Date");
             $table->integer("Duration");
             $table->string("Status");
+            $table->date("Date of Progress");
+            $table->string("Description");
+            $table->string("Methodology");
+            $table->string("System Platform");
+            $table->string("Deployment Type");
             $table->timestamps();
         });
     }
