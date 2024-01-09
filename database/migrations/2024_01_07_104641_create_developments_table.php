@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('developments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("ProjectID")->constrained('projects');;
+            $table->string("Project Title");
+            $table->string("Methodology");
+            $table->string("System Platform");
+            $table->string("Deployment Type");
             $table->timestamps();
         });
     }

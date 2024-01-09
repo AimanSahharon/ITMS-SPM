@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('businessunit_project', function (Blueprint $table) {
             $table->id();
-            $table->string('AdminID');
-            $table->string('Name');
-            $table->string('Email');
-            $table->string('PhoneNumber');
+            $table->foreignId('Business_Unit_id')->constrained('business_units');
+            $table->foreignId('project_id')->constrained('projects'); //constrained to subject table and cannot insert data but choose data from subject table
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('businessunit_project');
     }
 };

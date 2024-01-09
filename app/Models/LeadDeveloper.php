@@ -10,4 +10,9 @@ class LeadDeveloper extends Model
 {
     use HasFactory;
     Use SoftDeletes;
+
+    public function project()
+    {
+        return $this->hasOne(Project::class);
+    }
 }

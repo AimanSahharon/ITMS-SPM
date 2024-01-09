@@ -10,4 +10,5 @@ class Manager extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
 }

@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('business_units', function (Blueprint $table) {
             $table->id();
+            $table->string('BuID');
+            $table->string('Name');
+            $table->string('Email');
+            $table->string('PhoneNumber');
+            $table->string('BuName');
             $table->timestamps();
         });
     }

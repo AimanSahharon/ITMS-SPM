@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lead_developers', function (Blueprint $table) {
+        Schema::create('developer_project', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('developer_id')->constrained('developers');
+            $table->foreignId('project_id')->constrained('projects'); //constrained to subject table and cannot insert data but choose data from subject table
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lead_developers');
+        Schema::dropIfExists('developer_project');
     }
 };

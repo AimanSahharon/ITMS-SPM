@@ -10,4 +10,14 @@ class BusinessUnit extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public function RequestProjects()
+    {
+        return $this->hasMany(RequestProject::class);
+    }
+
+    public function Projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

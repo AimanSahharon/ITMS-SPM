@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('progress', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("ProjectID")->constrained('projects');
+            $table->string("Project Title");
+            $table->string("Lead Developer");
+            $table->date("Date of Progress");
+            $table->string("Description");
+            $table->string("Status");
             $table->timestamps();
         });
     }

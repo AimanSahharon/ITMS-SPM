@@ -10,4 +10,9 @@ class Progress extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public function project()
+    {
+        return $this->hasOne(Project::class, 'ProjectID');
+    }
 }
