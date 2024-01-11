@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('bunit', \App\Http\Controllers\BunitController::class);
+Route::resource('developer', \App\Http\Controllers\DeveloperController::class);

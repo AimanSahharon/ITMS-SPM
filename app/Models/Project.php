@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\BunitController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Bunit extends Model
+class Project extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable =['BUID', 'Name', 'Email','PhoneNumber'];
-
-    public function projects()
+    public function bunits()
     {
-        return $this->hasMany(ProjectController::class);
+        return $this->belongsToMany(BunitController::class);
     }
 }
