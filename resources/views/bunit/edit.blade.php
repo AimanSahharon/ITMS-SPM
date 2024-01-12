@@ -25,7 +25,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group  row">
+                    <div class="form-group  row mb-3">
                         <label for="Email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
                             <input type="text" name="Email" class="form-control" id="Email" value="{{ $bunit->Email }}">
@@ -34,7 +34,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group  row">
+                    <div class="form-group  row mb-3">
                         <label for="PhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
                         <div class="col-sm-10">
                             <input type="text" name="PhoneNumber" class="form-control" id="PhoneNumber" value="{{ $bunit->PhoneNumber }}">

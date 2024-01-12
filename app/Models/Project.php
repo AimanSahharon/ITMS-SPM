@@ -12,6 +12,8 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable =['ProjectID', 'BUID', 'Title','System_Owner', 'PIC', 'Lead_Developer', 'Start_Date', 'End_Date', 'Duration', 'Status'];
+
     public function bunits()
     {
         return $this->belongsToMany(BunitController::class);
