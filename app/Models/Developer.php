@@ -12,4 +12,9 @@ class Developer extends Model
     use SoftDeletes;
 
     protected $fillable =['DevID', 'Name', 'Email','PhoneNumber'];
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'developer_project');
+    }
 }

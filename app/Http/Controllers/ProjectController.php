@@ -6,6 +6,7 @@ use App\Models\Bunit;
 use App\Models\Developer;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use DateTime;
 
 class ProjectController extends Controller
 {
@@ -23,9 +24,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $bunit = Bunit::all();
-        $lead_developer = Developer::all();
-        return view('project.create', ['bunit'=>$bunit], ['lead_developer'=>$lead_developer]);
+        //$bunit = Bunit::all();
+        //$lead_developer = Developer::all();
+        return view('project.create'); //['bunit'=>$bunit], ['lead_developer'=>$lead_developer]);
     }
 
     /**
@@ -37,35 +38,45 @@ class ProjectController extends Controller
 
         $validated = $request->validate([
             'ProjectID' =>'required|min:1|string|max:255',
-            //'BUID' =>'required|min:1|string|max:255',
             'Title'=>'required|min:1|string|max:255',
             //'System_Owner' => 'required|min:1|string|max:255',
             'PIC' =>'required|min:1|string|max:255',
             //'Lead_Developer' =>'required|min:1|string|max:255',
-            'Start_Date' =>'required|min:1|string|max:255',
-            'End_Date' =>'required|min:1|string|max:255',
-            'Duration' =>'required|min:1|string|max:255',
+            //'Start_Date' =>'required|min:1|string|max:255',
+            //'End_Date' =>'required|min:1|string|max:255',
+            //'Duration' =>'required|min:1|string|max:255',
             'Status' =>'required|min:1|string|max:255',
         ]);
 
 
         $project = new Project;
         $project->ProjectID = $request->ProjectID;
-        //$project->BUID = $request->BUID;
-        $project->BUID = $request->input('BUID');
         $project->Title = $request->Title;
         //$project->System_Owner = $request->System_Owner;
-        $project->System_Owner = $request->input('System_Owner');
         $project->PIC = $request->PIC;
         //$project->Lead_Developer = $request->Lead_Developer;
-        $project->Lead_Developer = $request->input('Lead_Developer');
         $project->Start_Date = $request->Start_Date;
         $project->End_Date = $request->End_Date;
-        $project->Duration = $request->Duration;
+
+        $startDate = new DateTime($request->Start_Date);
+        $endDate = new DateTime($request->End_Date);
+        $dayDifference = $endDate->diff($startDate)->days;
+        $project->Duration = $dayDifference;
         $project->Status = $request->Status;
 
 
         $project->save();
+
+        //$developer = Developer::find($request->Name);
+        //$developer->projects()->save($project);
+
+        //$bunit = Bunit::find($request->BUID);
+        //$bunit->projects()->save($project);
+
+        //$selectedBunit = $request->input('bunits');
+
+        // Add the selected subjects to the student (this is just an example, modify as needed)
+        //$project->bunits()->attach($selectedBunit);
 
         return redirect()->route('project.index')
             ->withSuccess('New Project has been added successfully');
@@ -76,7 +87,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('project.show',compact('project'));
+        $allDevelopers = Developer::all();
+        return view('project.show',compact('project', 'allDevelopers'));
     }
 
     /**
@@ -94,7 +106,7 @@ class ProjectController extends Controller
     {
         $validated = $request->validate([
             'ProjectID' =>'required|min:4|string|max:255',
-            'BUID' =>'required|min:4|string|max:255',
+            //'BUID' =>'required|min:4|string|max:255',
             'Title'=>'required|min:6|string|max:255',
             'System_Owner' => 'required|min:4|string|max:255',
             'PIC' =>'required|min:4|string|max:255',
@@ -118,5 +130,47 @@ class ProjectController extends Controller
     {
         $project->delete();
         return redirect()->route('project.index');
+    }
+
+    public function addToDeveloper(Request $request, $projectId)
+    {
+        // Implement the logic to add subjects for the given student
+        // You can access the selected subjects via $request->input('subjects')
+
+        // Example logic:
+        $project = Project::find($projectId);
+        $selectedDevelopers = $request->input('developers');
+
+        // Add the selected subjects to the student (this is just an example, modify as needed)
+        $project->developers()->attach($selectedDevelopers);
+
+        // Redirect or return a response as needed
+        return redirect()->back()->with('success', 'Developer added successfully');
+    }
+
+    public function dropAllDevelopers($projectId)
+    {
+        // Implement the logic to drop all subjects for the given student
+        // Example:
+        $project = Project::find($projectId);
+
+        // Detach all subjects for the student
+        $project->developers()->detach();
+
+        // Redirect or return a response as needed
+        return redirect()->back()->with('success', 'All developers dropped successfully');
+    }
+
+    public function dropDeveloper($projectId, $developerId)
+    {
+        // Implement the logic to drop a specific subject for the given student
+        // Example:
+        $project = Project::find($projectId);
+
+        // Detach the specific subject for the student
+        $project->developers()->detach($developerId);
+
+        // Redirect or return a response as needed
+        return redirect()->back()->with('success', 'Developer dropped successfully');
     }
 }

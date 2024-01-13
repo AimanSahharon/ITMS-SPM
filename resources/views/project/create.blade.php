@@ -31,19 +31,6 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group  row mb-3">
-                        <label for="BUID" class="col-sm-2 col-form-label">Business Unit ID</label>
-                        <div class="col-sm-10">
-                            <select name="BUID" id="BUID">
-                                @foreach($bunit as $row)
-                                    <option value="{{$row->bunit_id}}">{{$row->BUID}}</option>
-                                @endforeach
-                            </select>
-                            @error('BUID')
-                            <strong style="width: 100%; margin-top: 0.25rem; font-size: 80%;color: #e3342f;">{{ $message }}</strong>
-                            @enderror
-                        </div>
-                    </div>
 
                     <div class="form-group  row mb-3">
                         <label for="Title" class="col-sm-2 col-form-label">Title</label>
@@ -55,19 +42,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group  row mb-3">
-                        <label for="System_Owner" class="col-sm-2 col-form-label">System Owner</label>
-                        <div class="col-sm-10">
-                            <select name="System_Owner" id="System_Owner">
-                                @foreach($bunit as $row)
-                                    <option value="{{$row->bunit_id}}">{{$row->Name}}</option>
-                                @endforeach
-                            </select>
-                            @error('System_Owner')
-                            <strong style="width: 100%; margin-top: 0.25rem; font-size: 80%;color: #e3342f;">{{ $message }}</strong>
-                            @enderror
-                        </div>
-                    </div>
+
 
                     <div class="form-group  row mb-3">
                         <label for="Title" class="col-sm-2 col-form-label">Person In Charge</label>
@@ -79,19 +54,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group  row mb-3">
-                        <label for="Lead_Developer" class="col-sm-2 col-form-label">Lead Developer</label>
-                        <div class="col-sm-10">
-                            <select name="Lead_Developer" id="Lead_Developer">
-                                @foreach($lead_developer as $row)
-                                    <option value="{{$row->developer_id}}">{{$row->Name}}</option>
-                                @endforeach
-                            </select>
-                            @error('Lead_Developer')
-                            <strong style="width: 100%; margin-top: 0.25rem; font-size: 80%;color: #e3342f;">{{ $message }}</strong>
-                            @enderror
-                        </div>
-                    </div>
+
 
                     <div class="form-group  row mb-3">
                         <label for="Start_Date" class="col-sm-2 col-form-label">Start Date</label>
@@ -113,15 +76,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group  row mb-3">
-                        <label for="Duration" class="col-sm-2 col-form-label">Duration</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="Duration" class="form-control" id="Duration">
-                            @error('Duration')
-                            <strong style="width: 100%; margin-top: 0.25rem; font-size: 80%;color: #e3342f;">{{ $message }}</strong>
-                            @enderror
-                        </div>
-                    </div>
+
 
                     <div class="form-group  row mb-3">
                         <label for="Status" class="col-sm-2 col-form-label">Status</label>
@@ -133,9 +88,7 @@
                         </div>
                     </div>
 
-
-
-                </div>
+              </div>
             </div>
             <div class="text-center">
                 <a class="btn btn-warning " href="{{route('project.index')}}">Back</a>
@@ -144,6 +97,7 @@
         </form>
     </div>
 @endsection
+
 
 
 

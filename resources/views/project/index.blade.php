@@ -13,7 +13,7 @@
             <a class="btn btn-primary float-end" href="{{route('project.create')}}">Add New Project</a>
             <table class="table">
                 <thead>
-                <tr><th>No.</th><th>Project ID</th><th>Title</th><th>Business Unit ID</th><th>System Owner</th><th>Person in Charge</th><th>Lead Developer</th><th>Start Date</th><th>End Date</th><th>Duration</th><th>Status</th><th>Action</th></tr>
+                <tr><th>No.</th><th>Project ID</th><th>Title</th><th>Person in Charge</th><th>Start Date</th><th>End Date</th><th>Duration</th><th>Status</th><th>Action</th></tr>
                 </thead>
                 <tbody>
                 @php($i=1)
@@ -22,10 +22,10 @@
                         <td>{{$i++}}</td>
                         <td>{{$p->ProjectID}}</td>
                         <td>{{$p->Title}}</td>
-                        <td>{{$p->BUID}}</td>
-                        <td>{{$p->System_Owner}}</td>
+                       {{-- <td>{{$p->BUID}}</td>--}}
+                        {{--<td>{{$p->System_Owner}}</td>--}}
                         <td>{{$p->PIC}}</td>
-                        <td>{{$p->Lead_Developer}}</td>
+                        {{-- <td>{{$p->Lead_Developer}}</td> --}}
                         <td>{{$p->Start_Date}}</td>
                         <td>{{$p->End_Date}}</td>
                         <td>{{$p->Duration}}</td>
