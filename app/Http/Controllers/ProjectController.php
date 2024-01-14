@@ -7,6 +7,7 @@ use App\Models\Developer;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use DateTime;
+use App\Models\Progress;
 
 class ProjectController extends Controller
 {
@@ -245,11 +246,63 @@ class ProjectController extends Controller
         return redirect()->back()->with('success', 'Business Unit dropped successfully');
     }
 
+    // ProjectController.php
+
     public function progress(Project $project)
     {
-        $allDevelopers = Developer::all();
-        return view('project.progress',compact('project', 'allDevelopers'));
+        $progress = $project->progress;
+        return view('project.progress', compact('project', 'progress'));
     }
+
+    public function storeProgress(Request $request, Project $project)
+    {
+        $request->validate([
+            'ReportID' => 'required|string',
+            'Date_Report' => 'required|date',
+            'Status' => 'required|string',
+            'Description' => 'required|string',
+        ]);
+
+        $progress = $project->progress()->create([
+            'ReportID' => $request->ReportID,
+            'Date_Report' => $request->Date_Report,
+            'Status' => $request->Status,
+            'Description' => $request->Description,
+        ]);
+
+        return redirect()->route('project.progress', $project->id)->withSuccess('Progress added successfully');
+    }
+
+    public function editProgress(Project $project, Progress $progress)
+    {
+        return view('project.editProgress', compact('project', 'progress'));
+    }
+
+    public function deleteProgress(Project $project, Progress $progress)
+    {
+        $progress->delete();
+        return redirect()->route('project.progress', $project->id)->withSuccess('Progress entry deleted successfully');
+    }
+
+    public function updateProgress(Request $request, Project $project, Progress $progress)
+    {
+        /*$validatedData = $request->validate([
+            'ReportID' => 'required|string',
+            'Date_Report' => 'required|date',
+            'Status' => 'required|string',
+            'Description' => 'required|string',
+        ]); */
+
+       // $progress->update($validatedData);
+        $project->update($request->all());
+
+        return redirect()->route('project.progress', $project->id)->withSuccess('Progress entry updated successfully');
+    }
+
+
+
+
+
 
 
 

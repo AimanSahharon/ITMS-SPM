@@ -30,6 +30,11 @@ class Project extends Model
         return $this->belongsToMany(Developer::class, 'leaddeveloper_project');
     }
 
+    public function progress()
+    {
+        return $this->HasMany(Progress::class);
+    }
+
 
 
 

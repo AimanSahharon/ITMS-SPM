@@ -78,7 +78,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-success">Add Bunit</button>
+                                    <button type="submit" class="btn btn-success">Add Business Unit</button>
                                     {{--<a class="btn btn-danger" href="{{route('dropAllDevelopers', $project->id)}}">Drop All</a> --}}
                                 </form>
                             </table>
