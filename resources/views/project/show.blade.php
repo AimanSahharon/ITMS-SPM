@@ -13,6 +13,45 @@
                         <td>Project Title</td>
                         <td>{{$project->Title}}</td>
                     </tr>
+
+                    <tr>
+                        <td>Business Unit</td>
+                        <td>
+                            <table class="table table-bordered">
+                                @php($i=1)
+                                <tr><th>No.</th><th>Business Unit ID</th><th>Name</th><th>Action</th></tr>
+                                @foreach($project->bunits as $b)
+                                    @if($i == 1)
+                                        <tr>
+                                            <td>{{$i}}</td>
+                                            <td>{{$b->BUID}}</td>
+                                            <td>{{$b->Name}}</td>
+                                            <td>
+                                                <a href="{{ route('dropBunit', ['project_id' => $project->id, 'bunit_id' => $b->id]) }}" class="btn btn-danger">Drop</a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                    @php($i++)
+                                @endforeach
+                                <form action="{{ route('addToBunit', $project->id) }}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="bunits">Select Business Unit:</label>
+                                        <select name="bunits" class="form-control">
+                                            @foreach($allBunits as $bunit)
+                                                <option value="{{ $bunit->id }}">{{ $bunit->Name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Add Bunit</button>
+                                    {{--<a class="btn btn-danger" href="{{route('dropAllDevelopers', $project->id)}}">Drop All</a> --}}
+                                </form>
+                            </table>
+
+                        </td>
+                    </tr>
+
+
                     <tr>
                         <td>Person in Charge</td>
                         <td>{{$project->PIC}}</td>

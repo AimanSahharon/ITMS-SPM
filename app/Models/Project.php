@@ -16,7 +16,7 @@ class Project extends Model
 
     public function bunits()
     {
-        return $this->belongsTo(BunitController::class, 'Name');
+        return $this->belongsToMany(Bunit::class, 'bunit_project');
     }
 
     public function developers()

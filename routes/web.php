@@ -38,3 +38,7 @@ Route::post('addToLeadDeveloper/{project}', [ProjectController::class, 'addToLea
 Route::get('dropLeadDeveloper/{project_id}/{developer_id}', [ProjectController::class, 'dropLeadDeveloper'])
     ->name('dropLeadDeveloper');
 
+Route::post('addToBunit/{project}', [ProjectController::class, 'addToBunit'])->name('addToBunit');
+Route::get('dropBunit/{project_id}/{bunit_id}', [ProjectController::class, 'dropBunit'])
+    ->name('dropBunit');
+

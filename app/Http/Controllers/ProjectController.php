@@ -88,7 +88,8 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $allDevelopers = Developer::all();
-        return view('project.show',compact('project', 'allDevelopers'));
+        $allBunits = Bunit::all();
+        return view('project.show',compact('project', 'allDevelopers', 'allBunits'));
     }
 
     /**
@@ -202,6 +203,33 @@ class ProjectController extends Controller
 
         // Redirect or return a response as needed
         return redirect()->back()->with('success', 'Lead developers dropped successfully');
+    }
+
+    public function addToBunit(Request $request, $projectId)
+    {
+        // Implement the logic to add subjects for the given student
+        // You can access the selected subjects via $request->input('subjects')
+
+        // Example logic:
+        $project = Project::find($projectId);
+        $selectedBunit = $request->input('bunits');
+
+        // Add the selected subjects to the student (this is just an example, modify as needed)
+        $project->bunits()->attach($selectedBunit);
+
+        // Redirect or return a response as needed
+        return redirect()->back()->with('success', 'Business Unit added successfully');
+    }
+
+    public function dropBunit($projectId, $developerId)
+    {
+        $project = Project::find($projectId);
+
+        // Detach all subjects for the student
+        $project->bunits()->detach();
+
+        // Redirect or return a response as needed
+        return redirect()->back()->with('success', 'Business Unit dropped successfully');
     }
 
     public function progress(Project $project)
