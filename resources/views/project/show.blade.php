@@ -36,6 +36,43 @@
                     <tr>
                         <!-- ... (existing code) ... -->
                     <tr>
+                        <td>Lead Developer</td>
+                        <td>
+                            <table class="table table-bordered">
+                                @php($i=1)
+                                <tr><th>No.</th><th>Developer ID</th><th>Name</th><th>Action</th></tr>
+                                @foreach($project->leaddevelopers as $d)
+                                    @if($i == 1)
+                                        <tr>
+                                            <td>{{$i}}</td>
+                                            <td>{{$d->DevID}}</td>
+                                            <td>{{$d->Name}}</td>
+                                            <td>
+                                                <a href="{{ route('dropLeadDeveloper', ['project_id' => $project->id, 'developer_id' => $d->id]) }}" class="btn btn-danger">Drop</a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                    @php($i++)
+                                @endforeach
+                                <form action="{{ route('addToLeadDeveloper', $project->id) }}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="developers">Select Lead Developers:</label>
+                                        <select name="developers" class="form-control">
+                                            @foreach($allDevelopers as $developer)
+                                                <option value="{{ $developer->id }}">{{ $developer->Name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Add Lead Developers</button>
+                                    {{--<a class="btn btn-danger" href="{{route('dropAllDevelopers', $project->id)}}">Drop All</a> --}}
+                                </form>
+                            </table>
+
+                        </td>
+                    </tr>
+
+                    <tr>
                         <td>Developers working on this Project</td>
                         <td>
                             <table class="table table-bordered">
@@ -55,6 +92,40 @@
                         </td>
                     </tr>
                 </table>
+
+                {{-----------------------------------------------------------------------------------------------------}}
+{{--
+                <form action="{{ route('addToLeadDeveloper', $project->id) }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="developers">Select Developers:</label>
+                        <select name="developers[]" class="form-control" multiple>
+                            @foreach($allDevelopers as $developer)
+                                <option value="{{ $developer->id }}">{{ $developer->Name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Add Developers</button>
+                    <a class="btn btn-danger" href="{{route('dropAllDevelopers', $project->id)}}">Drop All</a>
+
+                </form> --}}
+
+
+
+                <!-- Add Lead Developer Section -->
+               {{-- <div class="form-group">
+                    <label for="developer">Lead Developer:</label>
+                    <select name="developer" class="form-control">
+                        @foreach($allDevelopers as $developer)
+                            <option value="{{ $developer->id }}">{{ $developer->Name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addLeadDeveloper()">Add Lead Developer</button>
+                <div id="leadDeveloperRow" class="mt-3" style="display: none;">
+                    <strong>Lead Developer:</strong> <span id="leadDeveloperName"></span>
+                </div> --}}
+                {{---------------------------------------------------------------------------------------------------------------------}}
 
                 <!-- Add Subjects Form -->
                 <form action="{{ route('addToDeveloper', $project->id) }}" method="POST">
@@ -77,10 +148,10 @@
                 </form>
 
                 <!-- Drop All Button -->
-               {{-- <div class="text-center mt-3">
-                <button type="submit" class="btn btn-success">Add Developers</button>
-                <a class="btn btn-danger" href="{{route('dropAllDevelopers', $project->id)}}">Drop All</a>
-                </div> --}}
+                {{-- <div class="text-center mt-3">
+                 <button type="submit" class="btn btn-success">Add Developers</button>
+                 <a class="btn btn-danger" href="{{route('dropAllDevelopers', $project->id)}}">Drop All</a>
+                 </div> --}}
 
             </div>
         </div>

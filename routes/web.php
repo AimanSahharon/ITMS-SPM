@@ -31,3 +31,10 @@ Route::get('dropDeveloper/{project}/{developer}', [ProjectController::class, 'dr
 Route::get('dropAllDevelopers/{project}', [ProjectController::class, 'dropAllDevelopers'])->name('dropAllDevelopers');
 Route::get('dropDeveloper/{project_id}/{developer_id}', [ProjectController::class, 'dropDeveloper'])
     ->name('dropDeveloper');
+
+Route::get('/projects/{project}/progress', [ProjectController::class, 'progress'])->name('project.progress');
+
+Route::post('addToLeadDeveloper/{project}', [ProjectController::class, 'addToLeadDeveloper'])->name('addToLeadDeveloper');
+Route::get('dropLeadDeveloper/{project_id}/{developer_id}', [ProjectController::class, 'dropLeadDeveloper'])
+    ->name('dropLeadDeveloper');
+

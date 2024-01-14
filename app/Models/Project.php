@@ -25,4 +25,12 @@ class Project extends Model
     }
 
 
+    public function leaddevelopers()
+    {
+        return $this->belongsToMany(Developer::class, 'leaddeveloper_project');
+    }
+
+
+
+
 }

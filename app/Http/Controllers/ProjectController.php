@@ -173,4 +173,44 @@ class ProjectController extends Controller
         // Redirect or return a response as needed
         return redirect()->back()->with('success', 'Developer dropped successfully');
     }
+
+
+
+
+    public function addToLeadDeveloper(Request $request, $projectId)
+    {
+        // Implement the logic to add subjects for the given student
+        // You can access the selected subjects via $request->input('subjects')
+
+        // Example logic:
+        $project = Project::find($projectId);
+        $selectedDevelopers = $request->input('developers');
+
+        // Add the selected subjects to the student (this is just an example, modify as needed)
+        $project->leaddevelopers()->attach($selectedDevelopers);
+
+        // Redirect or return a response as needed
+        return redirect()->back()->with('success', 'Lead Developer added successfully');
+    }
+
+    public function dropLeadDeveloper($projectId, $developerId)
+    {
+        $project = Project::find($projectId);
+
+        // Detach all subjects for the student
+        $project->leaddevelopers()->detach();
+
+        // Redirect or return a response as needed
+        return redirect()->back()->with('success', 'Lead developers dropped successfully');
+    }
+
+    public function progress(Project $project)
+    {
+        $allDevelopers = Developer::all();
+        return view('project.progress',compact('project', 'allDevelopers'));
+    }
+
+
+
+
 }

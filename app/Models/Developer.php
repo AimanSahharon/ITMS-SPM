@@ -17,4 +17,10 @@ class Developer extends Model
     {
         return $this->belongsToMany(Project::class, 'developer_project');
     }
+
+    public function leadprojects()
+    {
+        return $this->belongsToMany(Project::class, 'leaddeveloper_project');
+    }
+
 }
