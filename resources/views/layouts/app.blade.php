@@ -23,7 +23,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand" href="{{ url('/project') }}">
+                {{--<a class="navbar-brand" href="{{ url('/project') }}">
                     Project
                 </a>
                 <a class="navbar-brand" href="{{ url('/developer') }}">
@@ -31,7 +31,7 @@
                 </a>
                 <a class="navbar-brand" href="{{ url('/bunit') }}">
                     Business Unit
-                </a>
+                </a> --}}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -39,6 +39,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        <a class="nav-link" href="{{route('project.index')}}">Projects</a>
+                        <a class="nav-link" href="{{route('developer.index')}}">Developers</a>
+                        <a class="nav-link" href="{{route('bunit.index')}}">BusinessUnit</a>
+                        <a class="nav-link" href="{{route('admin.index')}}">Users</a>
 
                     </ul>
 

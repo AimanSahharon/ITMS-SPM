@@ -26,6 +26,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('bunit', \App\Http\Controllers\BunitController::class);
     Route::resource('developer', \App\Http\Controllers\DeveloperController::class);
     Route::resource('project', \App\Http\Controllers\ProjectController::class);
+    Route::resource('user', \App\Http\Controllers\AdminController::class);
+    Route::get('/admin', 'AdminController@index')->name('admin.index');
+    Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+    Route::patch('/admin/update/{userId}', [\App\Http\Controllers\AdminController::class, 'update'])->name('admin.update');
+    Route::delete('/admin/destroy/{userId}', [\App\Http\Controllers\AdminController::class, 'destroy'])->name('admin.destroy');
+
+    //Route::patch('/users/{user}', 'UserController@update')->name('user.update');
+    //Route::delete('/users/{user}', 'UserController@destroy')->name('user.destroy');
 //Route::patch('/projects/{project}', 'ProjectController@update')->name('project.update');
 
     Route::post('addToDeveloper/{project}', [\App\Http\Controllers\ProjectController::class, 'addToDeveloper'])->name('addToDeveloper');
@@ -53,6 +61,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('project/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'editProgress'])->name('project.editProgress');
     Route::delete('/project/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'deleteProgress'])->name('project.deleteProgress');
     Route::patch('/project/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'updateProgress'])->name('project.updateProgress');
+
+
+
 
 
 });

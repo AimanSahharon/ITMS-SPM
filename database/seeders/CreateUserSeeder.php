@@ -39,6 +39,12 @@ class CreateUserSeeder extends Seeder
                 'password'=> bcrypt('password'),
                 'user_level' => 3
             ],
+            [
+                'name'=>'Bunit User',
+                'email'=>'bunit1@uniten.edu.my',
+                'password'=> bcrypt('password'),
+                'user_level' => 4
+            ],
         ];
         // foreach item in the $users array (above), create user
         foreach ($users as $key => $user) {
