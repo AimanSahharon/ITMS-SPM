@@ -46,6 +46,9 @@ class ProjectController extends Controller
             //'End_Date' =>'required|min:1|string|max:255',
             //'Duration' =>'required|min:1|string|max:255',
             'Status' =>'required|min:1|string|max:255',
+            'Methodology' =>'required|min:1|string|max:255',
+            'System_Platform' =>'required|min:1|string|max:255',
+            'Deployment_Type' =>'required|min:1|string|max:255',
         ]);
 
 
@@ -63,6 +66,9 @@ class ProjectController extends Controller
         $dayDifference = $endDate->diff($startDate)->days;
         $project->Duration = $dayDifference;
         $project->Status = $request->Status;
+        $project->Methodology = $request->Methodology;
+        $project->System_Platform = $request->System_Platform;
+        $project->Deployment_Type = $request->Deployment_Type;
 
 
         $project->save();
@@ -105,20 +111,27 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $validated = $request->validate([
+        /*$validated = $request->validate([
             'ProjectID' =>'required|min:4|string|max:255',
             //'BUID' =>'required|min:4|string|max:255',
             'Title'=>'required|min:6|string|max:255',
-            'System_Owner' => 'required|min:4|string|max:255',
+            //'System_Owner' => 'required|min:4|string|max:255',
             'PIC' =>'required|min:4|string|max:255',
-            'Lead_Developer' =>'required|min:4|string|max:255',
-            'Start_Date' =>'required|min:4|string|max:255',
-            'End_Date' =>'required|min:4|string|max:255',
-            'Duration' =>'required|min:4|string|max:255',
+            //'Lead_Developer' =>'required|min:4|string|max:255',
+            //'Start_Date' =>'required|min:4|string|max:255',
+            //'End_Date' =>'required|min:4|string|max:255',
+            //'Duration' =>'required|min:4|string|max:255',
             'Status' =>'required|min:4|string|max:255',
-        ]);
+            'Methodology' =>'required|min:1|string|max:255',
+            'System_Platform' =>'required|min:1|string|max:255',
+            'Deployment_Type' =>'required|min:1|string|max:255',
+        ]); */
 
         $project->update($request->all());
+        $startDate = new DateTime($project->Start_Date);
+        $endDate = new DateTime($project->End_Date);
+        $dayDifference = $endDate->diff($startDate)->days;
+        $project->update(['Duration' => $dayDifference]);
 
         return redirect()->route('project.index')
             ->withSuccess('Project has been updated successfully');

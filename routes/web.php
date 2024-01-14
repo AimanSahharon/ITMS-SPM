@@ -25,6 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('bunit', \App\Http\Controllers\BunitController::class);
 Route::resource('developer', \App\Http\Controllers\DeveloperController::class);
 Route::resource('project', \App\Http\Controllers\ProjectController::class);
+//Route::patch('/projects/{project}', 'ProjectController@update')->name('project.update');
 
 Route::post('addToDeveloper/{project}', [ProjectController::class, 'addToDeveloper'])->name('addToDeveloper');
 Route::get('dropDeveloper/{project}/{developer}', [ProjectController::class, 'dropDeveloper'])->name('dropDeveloper');

@@ -15,6 +15,41 @@
                     </tr>
 
                     <tr>
+                        <td>Person in Charge</td>
+                        <td>{{$project->PIC}}</td>
+                    </tr>
+                    <tr>
+                        <td>Start Date</td>
+                        <td>{{$project->Start_Date}}</td>
+                    </tr>
+                    <tr>
+                        <td>End Date</td>
+                        <td>{{$project->End_Date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Duration</td>
+                        <td>{{$project->Duration}}</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>{{$project->Status}}</td>
+                    </tr>
+                    <tr>
+                        <td>Methodology</td>
+                        <td>{{$project->Methodology}}</td>
+                    </tr>
+                    <tr>
+                        <td>System Platform</td>
+                        <td>{{$project->System_Platform}}</td>
+                    </tr>
+                    <tr>
+                        <td>Deployment Type</td>
+                        <td>{{$project->Deployment_Type}}</td>
+                    </tr>
+                    <tr>
+                        <!-- ... (existing code) ... -->
+
+                    <tr>
                         <td>Business Unit</td>
                         <td>
                             <table class="table table-bordered">
@@ -51,29 +86,6 @@
                         </td>
                     </tr>
 
-
-                    <tr>
-                        <td>Person in Charge</td>
-                        <td>{{$project->PIC}}</td>
-                    </tr>
-                    <tr>
-                        <td>Start Date</td>
-                        <td>{{$project->Start_Date}}</td>
-                    </tr>
-                    <tr>
-                        <td>End Date</td>
-                        <td>{{$project->End_Date}}</td>
-                    </tr>
-                    <tr>
-                        <td>Duration</td>
-                        <td>{{$project->Duration}}</td>
-                    </tr>
-                    <tr>
-                        <td>Status</td>
-                        <td>{{$project->Status}}</td>
-                    </tr>
-                    <tr>
-                        <!-- ... (existing code) ... -->
                     <tr>
                         <td>Lead Developer</td>
                         <td>

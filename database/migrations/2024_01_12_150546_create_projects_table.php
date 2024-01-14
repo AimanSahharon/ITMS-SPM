@@ -20,6 +20,9 @@ return new class extends Migration
             $table->date('End_Date');
             $table->string('Duration');
             $table->string('Status');
+            $table->string('Methodology');
+            $table->string('System_Platform');
+            $table->string('Deployment_Type');
             $table->softDeletes();
             $table->timestamps();
         });
