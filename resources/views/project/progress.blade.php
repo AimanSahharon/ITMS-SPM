@@ -243,7 +243,7 @@
 
         <!-- Display existing progress entries -->
         @foreach ($progress->sortByDesc('Date_Report') as $entry)
-            <div>
+            <div class="container text-center">
                 <p>Report ID: {{ $entry->ReportID }}</p>
                 <p>Date of Report: {{ $entry->Date_Report }}</p>
                 <p>Status: {{ $entry->Status }}</p>

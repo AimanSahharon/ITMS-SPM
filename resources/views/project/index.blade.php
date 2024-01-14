@@ -36,7 +36,7 @@
                                 @method('DELETE')
                                 <a class="btn btn-info" href="{{route('project.show',$p->id)}}">Details</a>
                                 <a class="btn btn-warning" href="{{route('project.edit',$p->id)}}">Edit</a>
-                                <a class="btn btn-secondary" href="{{route('project.progress',$p->id)}}">Progress</a>
+                                <a class="btn btn-secondary" href="{{route('project.progress',$p->id)}}">Progress Report</a>
                                 <input class="btn btn-danger" type="submit" value="Delete" onclick="return confirm('Confirm DELETE? this student {{$p->Title}}')">
                             </form>
                         </td>

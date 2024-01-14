@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Developer;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class DeveloperController extends Controller
@@ -53,7 +54,8 @@ class DeveloperController extends Controller
      */
     public function show(Developer $developer)
     {
-        return view('developer.show',compact('developer'));
+        $allProject = Project::all();
+        return view('developer.show',compact('developer', 'allProject'));
     }
 
     /**
