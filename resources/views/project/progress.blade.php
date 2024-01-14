@@ -248,7 +248,17 @@
                 <p>Date of Report: {{ $entry->Date_Report }}</p>
                 <p>Status: {{ $entry->Status }}</p>
                 <p>Description: {{ $entry->Description }}</p>
-                <!-- Add edit and delete links here if needed -->
+
+                <div class='btn-group'>
+                <a href="{{ route('project.editProgress', ['project' => $project->id, 'progress_id' => $entry->id]) }}" class="btn btn-primary">Edit</a>
+
+                <form action="{{ route('project.deleteProgress', ['project' => $project->id, 'progress' => $entry->id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                </div>
+
                 <hr>
             </div>
         @endforeach

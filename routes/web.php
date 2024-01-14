@@ -70,4 +70,5 @@ Route::get('/projects/{project}/progress', [\App\Http\Controllers\ProjectControl
 Route::post('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'storeProgress'])->name('project.storeProgress');
 
 Route::get('project/{project}/progress/{progress_id}', [\App\Http\Controllers\ProjectController::class, 'editProgress'])->name('project.editProgress');
-Route::delete('/project/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'deleteProgress'])->name('project.deleteProgress');
+Route::delete('/project/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'deleteProgress'])->name('project.deleteProgress');
+Route::patch('/project/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'updateProgress'])->name('project.updateProgress');
