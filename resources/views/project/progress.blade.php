@@ -250,7 +250,7 @@
                 <p>Description: {{ $entry->Description }}</p>
 
                 <div class='btn-group'>
-                <a href="{{ route('project.editProgress', ['project' => $project->id, 'progress_id' => $entry->id]) }}" class="btn btn-primary">Edit</a>
+                {{--<a href="{{ route('project.editProgress', ['project' => $project->id, 'progress' => $entry->id]) }}" class="btn btn-primary">Edit</a> --}}
 
                 <form action="{{ route('project.deleteProgress', ['project' => $project->id, 'progress' => $entry->id]) }}" method="POST">
                     @csrf

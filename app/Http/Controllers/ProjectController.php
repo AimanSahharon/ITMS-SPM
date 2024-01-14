@@ -294,7 +294,7 @@ class ProjectController extends Controller
         ]); */
 
        // $progress->update($validatedData);
-        $project->update($request->all());
+        $progress->update($request->all());
 
         return redirect()->route('project.progress', $project->id)->withSuccess('Progress entry updated successfully');
     }

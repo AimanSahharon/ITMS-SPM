@@ -33,9 +33,9 @@ Route::get('dropAllDevelopers/{project}', [\App\Http\Controllers\ProjectControll
 Route::get('dropDeveloper/{project_id}/{developer_id}', [\App\Http\Controllers\ProjectController::class, 'dropDeveloper'])
     ->name('dropDeveloper');
 
-Route::get('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'progress'])->name('project.progress');
-Route::post('/project/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'storeProgress'])->name('project.storeProgress');
-Route::post('/project/{project}/progress', 'ProjectController@storeProgress')->name('project.storeProgress');
+//Route::get('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'progress'])->name('project.progress');
+//Route::post('/project/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'storeProgress'])->name('project.storeProgress');
+//Route::post('/project/{project}/progress', 'ProjectController@storeProgress')->name('project.storeProgress');
 
 
 Route::post('addToLeadDeveloper/{project}', [\App\Http\Controllers\ProjectController::class, 'addToLeadDeveloper'])->name('addToLeadDeveloper');
@@ -46,29 +46,9 @@ Route::post('addToBunit/{project}', [\App\Http\Controllers\ProjectController::cl
 Route::get('dropBunit/{project_id}/{bunit_id}', [\App\Http\Controllers\ProjectController::class, 'dropBunit'])
     ->name('dropBunit');
 
-// web.php
-/*
-Route::get('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'progress'])->name('project.progress');
-Route::post('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'storeProgress'])->name('project.storeProgress');
-Route::get('/project/{project_id}/progress/{progress_id}/edit', [\App\Http\Controllers\ProjectController::class, 'editProgress'])->name('project.editProgress');
-Route::get('/project/{project_id}/progress/{progress_id}/edit', [\App\Http\Controllers\ProjectController::class, 'editProgress'])->name('project.progress.edit');
-Route::delete('/project/{project_id}/progress/{progress_id}', [\App\Http\Controllers\ProjectController::class, 'deleteProgress'])->name('project.progress.delete');
-
-
-Route::get('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'progress'])->name('project.progress');
-Route::post('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'storeProgress'])->name('project.storeProgress');
-Route::delete('/projects/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'deleteProgress'])->name('project.deleteProgress');
-
-Route::get('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'progress'])->name('project.progress');
-Route::post('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'storeProgress'])->name('project.storeProgress');
-Route::get('/projects/{project}/progress/{progress}/edit', [\App\Http\Controllers\ProjectController::class, 'editProgress'])->name('project.editProgress');
-Route::patch('/projects/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'updateProgress'])->name('project.updateProgress');
-Route::delete('/projects/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'deleteProgress'])->name('project.deleteProgress');
-*/
-
 Route::get('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'progress'])->name('project.progress');
 Route::post('/projects/{project}/progress', [\App\Http\Controllers\ProjectController::class, 'storeProgress'])->name('project.storeProgress');
 
-Route::get('project/{project}/progress/{progress_id}', [\App\Http\Controllers\ProjectController::class, 'editProgress'])->name('project.editProgress');
+Route::get('project/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'editProgress'])->name('project.editProgress');
 Route::delete('/project/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'deleteProgress'])->name('project.deleteProgress');
 Route::patch('/project/{project}/progress/{progress}', [\App\Http\Controllers\ProjectController::class, 'updateProgress'])->name('project.updateProgress');
