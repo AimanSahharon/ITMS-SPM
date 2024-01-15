@@ -21,7 +21,7 @@ class ProgressController extends Controller
      */
     public function create()
     {
-        return view('progress.create');
+       return view('progress.create');
     }
 
     /**

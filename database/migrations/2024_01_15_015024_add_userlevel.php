@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('user_level')->default(5);
+            $table->integer('user_level')->default(3);
         });
-
     }
 
     /**
@@ -23,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('userLevel');
+            $table->dropColumn('user_level');
         });
     }
 };

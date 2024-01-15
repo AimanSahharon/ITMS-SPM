@@ -8,6 +8,8 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use DateTime;
 use App\Models\Progress;
+use App\Policies\ProjectPolicy;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -16,6 +18,21 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        //$userLevel = Auth::user()->user_level;
+
+        /*if ($userLevel == 0 || $userLevel == 1) {
+            $projects = Project::all();
+        } else {
+            $userId = Auth::developer()->developer_id;
+
+            $projects = Project::whereHas('developers', function ($query) use ($developerId) {
+                $query->where('developer_id', $developerId);
+            })->get();
+        }
+        // For other user levels, display all projects
+        $projects = Project::all(); */
+
+
         $projects = Project::all();
         return view('project.index', compact('projects'));
     }
@@ -27,6 +44,16 @@ class ProjectController extends Controller
     {
         //$bunit = Bunit::all();
         //$lead_developer = Developer::all();
+        /*if (auth()->user()->can('create'))
+        {
+            return view('project.create');
+        }
+        else
+        {
+            abort(403);
+        } */
+        $this->authorize('create', \App\Models\Project::class);
+
         return view('project.create'); //['bunit'=>$bunit], ['lead_developer'=>$lead_developer]);
     }
 
@@ -94,6 +121,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+
         $allDevelopers = Developer::all();
         $allBunits = Bunit::all();
         return view('project.show',compact('project', 'allDevelopers', 'allBunits'));
@@ -104,6 +132,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $this->authorize('view', \App\Models\Project::class);
         return view('project.edit',compact('project'));
     }
 
@@ -127,6 +156,7 @@ class ProjectController extends Controller
             'System_Platform' =>'required|min:1|string|max:255',
             'Deployment_Type' =>'required|min:1|string|max:255',
         ]); */
+        $this->authorize('view', \App\Models\Project::class);
 
         $project->update($request->all());
         $startDate = new DateTime($project->Start_Date);
@@ -143,6 +173,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $this->authorize('view', \App\Models\Project::class);
         $project->delete();
         return redirect()->route('project.index');
     }

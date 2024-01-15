@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Developer;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class DeveloperController extends Controller
 {
@@ -13,7 +15,17 @@ class DeveloperController extends Controller
      */
     public function index()
     {
-        $developers = Developer::all();
+        $userLevel = Auth::user()->user_level;
+
+        if ($userLevel == 0 || $userLevel == 1) {
+            $developers = Developer::all();
+        } else {
+            $userEmail = Auth::user()->email;
+            $developers = Developer::where('Email', $userEmail)->get();
+        }
+        //$userEmail = Auth::user()->email;
+        //$developers = Developer::where('Email', $userEmail)->get();
+        //$developers = Developer::all();
         return view('developer.index', compact('developers'));
     }
 

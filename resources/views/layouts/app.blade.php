@@ -39,10 +39,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @can('isDeveloperOrAdmin')
                         <a class="nav-link" href="{{route('project.index')}}">Projects</a>
+                        @endcan
+
+                        @can('isDeveloperOrAdmin')
                         <a class="nav-link" href="{{route('developer.index')}}">Developers</a>
+                            @endcan
+
+                            @can('isManagerOrBunitOrAdmin')
                         <a class="nav-link" href="{{route('bunit.index')}}">BusinessUnit</a>
+                            @endcan
+
+                        @can('isAdmin')
                         <a class="nav-link" href="{{route('admin.index')}}">Users</a>
+                        @endcan
 
                     </ul>
 

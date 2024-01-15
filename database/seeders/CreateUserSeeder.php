@@ -17,31 +17,31 @@ class CreateUserSeeder extends Seeder
         $users = [
             [
                 'name'=>'Admin User',
-                'email'=>'admin@uniten.edu.my',
+                'email'=>'admin@itms.uniten.edu.my',
                 'password'=> bcrypt('password'),
                 'user_level' => 0
             ],
             [
                 'name'=>'Manager User',
-                'email'=>'manager1@itms.uniten.edu.my',
+                'email'=>'manager@itms.uniten.edu.my',
                 'password'=> bcrypt('password'),
                 'user_level' => 1
             ],
             [
                 'name'=>'Lead Developer User',
-                'email'=>'developer1@itms.uniten.edu.my',
+                'email'=>'john@itms.uniten.edu.my',
                 'password'=> bcrypt('password'),
                 'user_level' => 2
             ],
             [
                 'name'=>'Developer User',
-                'email'=>'developer2@itms.uniten.edu.my',
+                'email'=>'jack@itms.uniten.edu.my',
                 'password'=> bcrypt('password'),
                 'user_level' => 3
             ],
             [
                 'name'=>'Bunit User',
-                'email'=>'bunit1@uniten.edu.my',
+                'email'=>'bunit@uniten.edu.my',
                 'password'=> bcrypt('password'),
                 'user_level' => 4
             ],

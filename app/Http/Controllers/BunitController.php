@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bunit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BunitController extends Controller
 {
@@ -12,7 +13,15 @@ class BunitController extends Controller
      */
     public function index()
     {
-        $bunits = Bunit::all();
+        $userLevel = Auth::user()->user_level;
+
+        if ($userLevel == 0 || $userLevel == 1) {
+            $bunits = Bunit::all();
+        } else {
+            $userEmail = Auth::user()->email;
+            $bunits = Bunit::where('Email', $userEmail)->get();
+        }
+        //$bunits = Bunit::all();
         return view('bunit.index', compact('bunits'));
     }
 
